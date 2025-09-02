@@ -28,7 +28,7 @@ dependencies {
     // ...
 }
 ```
-.
+
 ## Documentation
 
 - [API Reference](./docs/api-reference.md)
