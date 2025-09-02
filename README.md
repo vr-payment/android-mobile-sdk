@@ -9,7 +9,7 @@
 
 # VR Payment Android Payment SDK
 
-[![Maven Central](https://img.shields.io/maven-central/v/de.vrpayment/vr-payment)](https://central.sonatype.com/artifact/de.vrpayment/vr-payment/1.5.0)
+[![Maven Central](https://img.shields.io/maven-central/v/de.vr-payment/vr-payment)](https://central.sonatype.com/artifact/de.vr-payment/vr-payment/1.5.0)
 
 ## Installation
 
