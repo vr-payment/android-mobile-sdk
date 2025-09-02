@@ -24,7 +24,7 @@ Add `vr-payment` to your `app/build.gradle` dependencies.
 ```groovy
 dependencies {
     // ...
-    implementation("com.VR Payment:VR Payment-payment-sdk:1.5.0")
+    implementation("de.vr-payment:vr-payment:1.5.0")
     // ...
 }
 ```
