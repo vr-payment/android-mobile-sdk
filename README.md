@@ -9,7 +9,7 @@
 
 # VR Payment Android Payment SDK
 
-[![Maven Central](https://img.shields.io/maven-central/v/de.vr-payment/vr-payment)](https://central.sonatype.com/artifact/de.vr-payment/vr-payment/1.5.1)
+[![Maven Central](https://img.shields.io/maven-central/v/de.vr-payment/vr-payment)](https://central.sonatype.com/artifact/de.vr-payment/vr-payment/1.5.2)
 
 ## Installation
 
@@ -24,7 +24,7 @@ Add `vr-payment` to your `app/build.gradle` dependencies.
 ```groovy
 dependencies {
     // ...
-    implementation("de.vr-payment:vr-payment:1.5.1")
+    implementation("de.vr-payment:vr-payment:1.5.2")
     // ...
 }
 ```
