@@ -1,19 +1,19 @@
 ## Integration
 
 - [Integration](#integration)
-  - [Set up VR Payment](#set-up-vr-payment)
+- [Set up](#set-up)
   - [Create transaction](#create-transaction)
   - [Collect payment details](#collect-payment-details)
   - [Handle result](#handle-result)
   - [Verify payment](#verify-payment)
 
-### Set up VR Payment
+## Set up
 
-To use the Android Payment SDK, you need a [VR Payment account](https://gateway.vr-payment.de/user/signup). After signing up, set up your space and enable the payment methods you would like to support.
+To use the Android Payment SDK, you need a [account](https://gateway.vr-payment.de/user/signup). After signing up, set up your space and enable the payment methods you would like to support.
 
 ### Create transaction
 
-For security reasons, your app cannot create transactions and fetch access tokens. This has to be done on your server by talking to the [VR Payment Web Service API](https://gateway.vr-payment.de/en-us/doc/api/web-service). You can use one of the official SDK libraries to make these calls.
+For security reasons, your app cannot create transactions and fetch access tokens. This has to be done on your server by talking to the [Web Service API](https://gateway.vr-payment.de/en-us/doc/api/web-service). You can use one of the official SDK libraries to make these calls.
 
 To use the Android Payment SDK to collect payments, an endpoint needs to be added on your server that creates a transaction by calling the [create transaction](https://gateway.vr-payment.de/doc/api/web-service#transaction-service--create) API endpoint. A transaction holds information about the customer and the line items and tracks charge attempts and the payment state.
 
@@ -34,7 +34,7 @@ curl 'https://gateway.vr-payment.de/api/transaction/createTransactionCredentials
 
 Before launching the Android Payment SDK to collect the payment, your checkout page should show the total amount, the products that are being purchased and a checkout button to start the payment process.
 
-Is recommended to initialize `VRPaymentSdk` in `Application` class. You can always access `VRPaymentSdk` instance and `paymentResult` from everywhere in your app.
+It is recommended to initialize `VRPaymentSdk` in `Application` class. You can always access `VRPaymentSdk` instance and `paymentResult` from everywhere in your app.
 
 ```kotlin
 // ...
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-After the customer completes the payment, the dialog dismisses and the `paymentResult` method is called.
+After the customer completes the payment, the dialog dismisses and the registered `paymentResult(...)` callback is invoked
 
 ### Handle result
 
@@ -102,7 +102,7 @@ The response object contains these properties:
   | `COMPLETED` | The payment was successful. |
   | `FAILED` | The payment failed. Check the `message` for more information. |
   | `CANCELED` | The customer canceled the payment. |
-  | `PENDING` | The customer has aborted the payment process, so the payment is in a temporarily pending state. It will eventually reach a final status (successful or failed), but it may take a while. Wait for a webhook notification and use the VR Payment API to retrieve the status of the transaction and inform the customer that the payment is pending. |
+  | `PENDING` | The customer has aborted the payment process, so the payment is in a temporarily pending state. It will eventually reach a final status (successful or failed), but it may take a while. Wait for a webhook notification and use the API to retrieve the status of the transaction and inform the customer that the payment is pending. |
   | `TIMEOUT` | Token for this transaction expired. App will be closed and third-party app will get this message. For opening payment sdk third party app have to refetch token |
 
 - `message` providing a localized error message that can be shown to the customer.
@@ -142,4 +142,4 @@ class MainActivity : AppCompatActivity() {
 
 ### Verify payment
 
-As customers could quit the app or lose network connection before the result is handled or malicious clients could manipulate the response, it is strongly recommended to set up your server to listen for webhook events the get transactions' actual states. Find more information in the [webhook documentation](https://gateway.vr-payment.de/en-us/doc/webhooks).
+As customers could quit the app or lose network connection before the result is handled or malicious clients could manipulate the response, it is strongly recommended to set up your server to listen for webhook events to get transaction state updates. Find more information in the [webhook documentation](https://gateway.vr-payment.de/en-us/doc/webhooks).
