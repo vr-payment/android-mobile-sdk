@@ -12,4 +12,5 @@
 | `VRPaymentSdk.instance?.setLightTheme(theme: JSONObject)` | function | Overrides or extends the default light theme colors. |
 | `VRPaymentSdk.instance?.setCustomTheme(theme: JSONObject?, baseTheme: ThemeEnum)` | function | Forces a custom theme regardless of system appearance. Missing values are merged with the selected base theme. |
 | `VRPaymentSdk.instance?.setAnimation(type: AnimationEnum)` | function | Sets transition animation style used inside the payment flow. |
+| `VRPaymentSdk.instance?.setPendingTimeout(sec: Int)` | function | Sets how long (in seconds) the SDK keeps polling the backend for a final transaction status when the customer aborts an external payment step, before returning `PENDING`. The SDK polls every 2 seconds. The value is clamped between `2` and `600` seconds (10 minutes). When not set, the SDK returns `PENDING` immediately. |
 | `VRPaymentSdk.instance?.SDK_VERSION` | property | Current SDK version. |
